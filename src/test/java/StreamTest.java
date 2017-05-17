@@ -27,7 +27,7 @@ public class StreamTest {
 
 
     //一阳穿三线个股
-    @Test
+//    @Test
     public void yiyinsanyang() throws RemoteException {
         List<Stock> stocks = TestCaseGenerator.generateStocks();
 
@@ -61,7 +61,7 @@ public class StreamTest {
     }
 
     //按关键字过滤页面
-    @Test
+//    @Test
     public void findNewsUcareAbout() throws RemoteException {
         List<URL> news = new HuShenNewsRefCollector(HuShenNewsRefCollector.Topic.TOTAL, 2).get();
         List<URL> res = news.parallelStream().filter(new PageKeyFilter("万孚生物", false)).collect(Collectors.toList());
@@ -119,6 +119,7 @@ public class StreamTest {
         Date from = calendar.getTime();
         calendar.set(2015, Calendar.NOVEMBER, 25);
         Date to = calendar.getTime();
+        //setting market; setting order by money get way; setting fist n result;
         MostProfitableCubeCollector cubeCollector = new MostProfitableCubeCollector( MostProfitableCubeCollector.Market.CN,
                 MostProfitableCubeCollector.ORDER_BY.DAILY);
         CubeToCubeWithLastBalancingMapper mapper = null;
@@ -131,13 +132,17 @@ public class StreamTest {
         List<Cube> cubes = cubeCollector.get().parallelStream().map(mapper.andThen(mapper1)).collect(Collectors.toList());
         for (Cube cube : cubes) {
             System.out.print(cube.getName() + " 总收益: " + cube.getTotal_gain());
+            System.out.println("000000000");
+            System.out.println("000000000");
+            System.out.println("000000000");
+            System.out.println("000000000");
             System.out.println(" 最新持仓 " + cube.getRebalancing().getHistory().get(1).toString());
         }
     }
 
 
     //获取热股榜股票信息
-    @Test
+//    @Test
     public void HotRankStockDetail() throws RemoteException {
         StockScopeHotRankCollector collector = new StockScopeHotRankCollector(StockScopeHotRankCollector.Scope.US_WITHIN_24_HOUR);
         StockToStockWithAttributeMapper mapper1 = new StockToStockWithAttributeMapper();
@@ -152,7 +157,7 @@ public class StreamTest {
 
 
     //获得某个行业所有股票的详细信息和历史走势 比如畜牧业
-    @Test
+//    @Test
     public void IndustryStockDetail() throws RemoteException {
 
         CommissionIndustryCollector collector = new CommissionIndustryCollector();
@@ -179,7 +184,7 @@ public class StreamTest {
 
 
     //按行业分类获取所有股票
-    @Test
+//    @Test
     public void IndustryStockInfo() throws RemoteException {
 
         CommissionIndustryCollector collector = new CommissionIndustryCollector();
@@ -201,7 +206,7 @@ public class StreamTest {
 
 
     //游资追踪
-    @Test
+//    @Test
     public void LongHuBangTracking() throws RemoteException {
         Calendar calendar = Calendar.getInstance();
         calendar.set(2015, Calendar.DECEMBER, 1);
