@@ -16,8 +16,14 @@ public enum URLMapper {
     STOCK_SELECTOR_JSON("https://xueqiu.com/stock/screener/screen.json"),
     LONGHUBANG_JSON("https://xueqiu.com/stock/f10/bizunittrdinfo.json"),
     STOCK_INDUSTRY_JSON("https://xueqiu.com/stock/f10/compinfo.json"),
+<<<<<<< HEAD
     CUBE_REBALANCING_JSON("https://xueqiu.com/cubes/rebalancing/history.json"),
     CUBE_TREND_JSON("https://xueqiu.com/cubes/nav_daily/all.json"),
+=======
+    CUBE_REBALANCING_JSON("https://xueqiu.com/cubes/rebalancing/history.json"),//tiao cang solve
+    CUBE_TREND_JSON("https://xueqiu.com/cubes/nav_daily/all.json"),
+//    CUBES_RANK_JSON("http://xueqiu.com/cubes/discover/rank/cube/list.json"),
+>>>>>>> dev
     CUBES_RANK_JSON("https://xueqiu.com/cubes/discover/rank/cube/list.json"),
     MARKET_QUOTATIONS_RANK_JSON("https://xueqiu.com/stock/quote_order.json"),
     SCOPE_STOCK_RANK_JSON("https://xueqiu.com/stock/rank.json"),
@@ -41,4 +47,11 @@ public enum URLMapper {
     public String toString() {
         return URL;
     }
+
+
+
+    private String refer = "ttps://xueqiu.com/stock/screener/screen.json?category=SH&exchange=&areacode=&indcode=&" +
+            "orderby=symbol&order=desc&current=ALL&pct=ALL&page=1&pb=0_5&pettm=0_50&roediluted.20170331=0_100&_=1495424651869";
+
+    private String top = "http://xueqiu.com/cubes/discover/rank/cube/list.json?category=SH&market=cn&count=10&profit=monthly_gain";
 }
