@@ -1,0 +1,35 @@
+# Package Files #
+*.war
+
+# Built application files
+*.apk
+*.ap_
+
+# Files for the Dalvik VM
+*.dex
+
+# Java class files
+*.class
+
+*.iml
+
+classes/
+build/
+out/
+bin/
+
+.gradle/
+gradle/
+
+.idea/*
+.idea/
+
+.classpath
+.project
+.mymetadata
+.settings/
+.metadata/
+target/
+target/*
+
+.m2

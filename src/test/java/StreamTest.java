@@ -112,6 +112,7 @@ public class StreamTest {
     }*/
 
     //最赚钱组合最新持仓以及收益走势、大盘走势
+    //the most make money group and it`s stock and the profile of the group and the main profile tendence
     @Test
     public void MostProfitableCubeDetail() throws RemoteException {
         Calendar calendar = Calendar.getInstance();
@@ -119,19 +120,23 @@ public class StreamTest {
         Date from = calendar.getTime();
         calendar.set(2015, Calendar.NOVEMBER, 25);
         Date to = calendar.getTime();
+
+        //get the most group
         MostProfitableCubeCollector cubeCollector = new MostProfitableCubeCollector( MostProfitableCubeCollector.Market.CN,
                 MostProfitableCubeCollector.ORDER_BY.DAILY);
+        //find one group`s stock
         CubeToCubeWithLastBalancingMapper mapper = null;
         try {
             mapper = new CubeToCubeWithLastBalancingMapper();
         } catch (RemoteException e) {
             e.printStackTrace();
         }
+        //find group tendency
         CubeToCubeWithTrendMapper mapper1 = new CubeToCubeWithTrendMapper(from, to);
         List<Cube> cubes = cubeCollector.get().parallelStream().map(mapper.andThen(mapper1)).collect(Collectors.toList());
         for (Cube cube : cubes) {
             System.out.print(cube.getName() + " 总收益: " + cube.getTotal_gain());
-            System.out.println(" 最新持仓 " + cube.getRebalancing().getHistory().get(1).toString());
+            System.out.println(" 最新持仓 " + cube.getRebalancing().getHistory().get(0).toString());
         }
     }
 

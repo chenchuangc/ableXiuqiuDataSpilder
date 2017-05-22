@@ -103,6 +103,10 @@ public class MostProfitableCubeCollector extends  AbstractCollector<List<Cube>> 
         String target = URLMapper.CUBES_RANK_JSON.toString();
         RequestParaBuilder builder = new RequestParaBuilder(target)
                 .addParameter("category", 12)
+                .addParameter("sale_flag", "0")
+                .addParameter("stock_positions", "0")
+                .addParameter("sort", "best_benefit")
+                .addParameter("page", "1")
                 .addParameter("count", topK)
                 .addParameter("market", market.toString())
                 .addParameter("profit", order_by.toString());
